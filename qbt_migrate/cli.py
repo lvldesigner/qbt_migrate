@@ -50,6 +50,14 @@ def parse_args(args=None):
         action="store_true",
         default=False,
     )
+    parser.add_argument(
+        "-z",
+        "--skip-backup",
+        help="Skips creating a backup zip archive of the BT_backup folder. "
+        "Default behavior is to create a backup.",
+        action="store_true",
+        default=False,
+    )
 
     parser.add_argument(
         "-l",
@@ -168,7 +176,7 @@ def main():  # noqa: C901
         args.new_path,
         args.regex,
         args.target_os,
-        True,
+        not args.skip_backup,
         args.skip_bad_files,
     )
 
